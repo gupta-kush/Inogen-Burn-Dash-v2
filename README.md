@@ -4,7 +4,21 @@
 
 # Burn-In Dashboard
 
-This contains everything you need to understand & run the app locally.
+A real-time, multi-user dashboard for tracking the elapsed time for devices being tested on a series of racks and shelves. Features an interactive view for operators and a dense, read-only TV view for floor displays.
+
+## Features
+
+- **Real-time Multi-user Sync**: Changes are instantly synchronized across all connected devices using Firebase Realtime Database
+- **Interactive Dashboard**: Full control interface for operators to start/stop timers, edit elapsed times, and assign station IDs
+- **TV/Compact View**: Dense, read-only display optimized for wall-mounted monitors and floor displays
+- **Manual Time Editing**: Easily adjust elapsed times with a modal interface (hours:minutes format)
+- **Light/Dark Theme**: Toggle between light and dark modes with automatic preference saving
+- **Progress Indicators**: Visual progress bars and color-coded timers (green/yellow/red thresholds)
+- **Station Management**: Assign and track station IDs for each shelf position
+- **Bulk Operations**: "Reset All" button to quickly clear all timers and station assignments
+- **Responsive Design**: Works on desktop, tablet, and mobile devices
+- **Facility Layout**: Organized by production lines (Line 2-7, Repair) with configurable rack numbers
+- **Persistent State**: All data persists across browser sessions and device restarts
 
 ## Run Locally
 
