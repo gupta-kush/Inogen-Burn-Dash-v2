@@ -1,0 +1,5 @@
+{
+  "name": "Burn-In Dashboard",
+  "description": "A real-time, multi-user dashboard for tracking the elapsed time for devices being tested on a series of racks and shelves. Features an interactive view for operators and a dense, read-only TV view for floor displays.",
+  "requestFramePermissions": []
+}
