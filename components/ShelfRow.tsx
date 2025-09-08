@@ -28,7 +28,7 @@ const ShelfRow: React.FC<ShelfRowProps> = ({ shelf, rackNumber, shelfIndex }) =>
                 {/* Larger font for the label */}
                 <span className="font-bold text-base text-slate-700 dark:text-slate-200">Rack {rackNumber} - {shelfIndex + 1}</span>
                 <span className="font-mono text-base bg-slate-100 dark:bg-slate-900/50 px-1.5 py-0.5 rounded text-brand-accent-blue">
-                    {shelf.stationId || '----'}
+                    {shelf.stationId || '--'}
                 </span>
             </div>
 
