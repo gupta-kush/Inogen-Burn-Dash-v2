@@ -6,20 +6,36 @@
 
 A real-time, multi-user dashboard for tracking the elapsed time for devices being tested on a series of racks and shelves. Features an interactive view for operators and a dense, read-only TV view for floor displays.
 
+## Quick Guide
+
+**Timer Colors:**
+Timers change color based on elapsed hours:
+- **Green:** 12+ hours
+- **Yellow:** 18–36 hours
+- **Red:** 36+ hours
+These thresholds are set according to current production requirements.
+
+**Views:**
+- **Interactive View:** Allows starting/stopping shelf timers, manually editing times, assigning station numbers, and resetting shelves.
+- **Compact View:** Read-only overview of all shelves. May be useful for TV/floor displays. Shows active vs inactive shelves.
+
+**Station Assignment:**
+- Use the dropdown to select and assign a station number to each shelf.
+
+**Manual Time Edit:**
+- Click the timer to open a modal and set a custom elapsed time (hours:minutes).
+
+**Theme Toggle:**
+- Switch between dark and light mode using the toggle in the top right. Your preference is saved automatically.
+
+**Reset Button:**
+- Use "Reset All" to clear all timers and station assignments for a fresh start.
+
+**Sync:**
+- All changes are instantly updated for everyone. No need to refresh.
 ## Features
 
 - **Real-time Multi-user Sync**: Changes are instantly synchronized across all connected devices using Firebase Realtime Database
-- **Interactive Dashboard**: Full control interface for operators to start/stop timers, edit elapsed times, and assign station IDs
-- **TV/Compact View**: Dense, read-only display optimized for wall-mounted monitors and floor displays
-- **Manual Time Editing**: Easily adjust elapsed times with a modal interface (hours:minutes format)
-- **Light/Dark Theme**: Toggle between light and dark modes with automatic preference saving
-- **Progress Indicators**: Visual progress bars and color-coded timers (green/yellow/red thresholds)
-- **Station Management**: Assign and track station IDs for each shelf position
-- **Bulk Operations**: "Reset All" button to quickly clear all timers and station assignments
-- **Responsive Design**: Works on desktop, tablet, and mobile devices
-- **Facility Layout**: Organized by production lines (Line 2-7, Repair) with configurable rack numbers
-- **Persistent State**: All data persists across browser sessions and device restarts
-
 ## Run Locally
 
 **Prerequisites:**  Node.js v18+
@@ -30,7 +46,6 @@ A real-time, multi-user dashboard for tracking the elapsed time for devices bein
    `npm run dev`
 
 ---
-
 ## Technical Documentation
 
 ### Technologies Used
