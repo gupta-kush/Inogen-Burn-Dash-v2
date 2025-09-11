@@ -39,15 +39,6 @@ const Header: React.FC<{ onResetAll: () => void }> = ({ onResetAll }) => {
             </h1>
             <nav className="flex items-center gap-4">
                 <ThemeToggle />
-                {isInteractiveView && (
-                    <button
-                        onClick={onResetAll}
-                        className="px-3 py-1.5 bg-red-600 dark:bg-red-700 text-white text-sm font-bold rounded-md hover:bg-red-700 dark:hover:bg-red-800 transition-colors focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-75"
-                        title="Reset all shelves to their initial state"
-                    >
-                        Reset All
-                    </button>
-                )}
                 {isInteractiveView ? (
                     <Link to="/compact" className="px-4 py-2 bg-brand-blue hover:bg-brand-blue/80 text-white font-semibold rounded-lg transition-colors">
                         Go to Compact View

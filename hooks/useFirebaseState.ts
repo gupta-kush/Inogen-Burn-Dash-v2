@@ -8,6 +8,7 @@ const useFirebaseState = <T,>(dbPath: string, initialState: T): [T, (value: SetS
   const [state, setState] = useState<T>(initialState);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const initialStateRef = useRef(initialState);
+  const lastValidStateRef = useRef<T>(initialState);
 
   const setFirebaseState = useCallback((valueOrUpdater: SetStateParam<T>) => {
     setState(prevState => {
@@ -27,8 +28,9 @@ const useFirebaseState = <T,>(dbPath: string, initialState: T): [T, (value: SetS
 
     const unsubscribe = onValue(dbRef, (snapshot) => {
       const value = snapshot.val();
-      if (value) {
+      if (value && typeof value === 'object' && Object.keys(value).length > 0) {
         // Data exists, update local state.
+        console.log("Firebase data received:", Object.keys(value).length, "racks");
         // Clean the data to ensure properties are not undefined.
         Object.keys(value).forEach(rackKey => {
             if (Array.isArray(value[rackKey])) {
@@ -41,11 +43,16 @@ const useFirebaseState = <T,>(dbPath: string, initialState: T): [T, (value: SetS
             }
         });
         setState(value);
+        lastValidStateRef.current = value; // Backup valid state
       } else if (isInitialLoad) {
         // Data doesn't exist, initialize it in Firebase.
-        console.log(`No data at path '${dbPath}'. Initializing with default state.`);
+        console.warn(`No data at path '${dbPath}'. Snapshot exists: ${snapshot.exists()}. Initializing with default state.`);
         set(dbRef, initialStateRef.current).catch(err => console.error("Failed to initialize Firebase state:", err));
         setState(initialStateRef.current);
+      } else {
+        // Data was cleared/corrupted after initial load - this is the bug!
+        console.error("Firebase data was cleared or corrupted! Snapshot exists:", snapshot.exists(), "Value:", value);
+        // Don't reset to initial state - keep current state or show error
       }
       
       if (isLoading) {

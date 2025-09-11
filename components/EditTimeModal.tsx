@@ -14,7 +14,7 @@ const parseTotalSeconds = (totalSeconds: number): {h: string, m: string, s: stri
     const minutes = Math.floor((totalSeconds % 3600) / 60);
     const seconds = Math.floor(totalSeconds % 60);
     return {
-        h: hours.toString().padStart(2, '0'),
+        h: hours.toString().padStart(hours >= 100 ? 3 : 2, '0'), // Use 3 digits if >= 100 hours
         m: minutes.toString().padStart(2, '0'),
         s: seconds.toString().padStart(2, '0'),
     };
@@ -62,8 +62,8 @@ const EditTimeModal: React.FC<EditTimeModalProps> = ({ isOpen, onClose, onSave, 
 
     const handleHoursChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const val = e.target.value.replace(/[^0-9]/g, '');
-        setHours(val.slice(-2));
-        if (val.length >= 2) {
+        setHours(val.slice(-3)); // Allow up to 3 digits
+        if (val.length >= 3) {
             minutesInputRef.current?.focus();
             minutesInputRef.current?.select();
         }
@@ -85,7 +85,7 @@ const EditTimeModal: React.FC<EditTimeModalProps> = ({ isOpen, onClose, onSave, 
             >
                 <h2 className="text-base font-bold mb-3 text-brand-accent-blue">Edit Elapsed Time</h2>
                 <div className="flex items-center justify-center gap-1 font-mono text-3xl mb-4">
-                    <input ref={hoursInputRef} type="text" value={hours} onChange={handleHoursChange} className="w-20 bg-slate-100 dark:bg-slate-900 text-slate-900 dark:text-slate-100 text-center rounded focus:outline-none focus:ring-2 focus:ring-brand-green p-1" />
+                    <input ref={hoursInputRef} type="text" value={hours} onChange={handleHoursChange} className="w-24 bg-slate-100 dark:bg-slate-900 text-slate-900 dark:text-slate-100 text-center rounded focus:outline-none focus:ring-2 focus:ring-brand-green p-1" />
                     <span className="text-slate-900 dark:text-slate-100">:</span>
                     <input ref={minutesInputRef} type="text" value={minutes} onChange={handleMinutesChange} className="w-20 bg-slate-100 dark:bg-slate-900 text-slate-900 dark:text-slate-100 text-center rounded focus:outline-none focus:ring-2 focus:ring-brand-green p-1" />
                 </div>
