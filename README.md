@@ -28,8 +28,8 @@ These thresholds are set according to current production requirements.
 **Theme Toggle:**
 - Switch between dark and light mode using the toggle in the top right. Your preference is saved automatically.
 
-**Reset Button:**
-- Use "Reset All" to clear all timers and station assignments for a fresh start.
+**Reset:**
+- Use "Reset" buttton on any shelf to clear its timer and station assignment.
 
 **Sync:**
 - All changes are instantly updated for everyone. No need to refresh.
